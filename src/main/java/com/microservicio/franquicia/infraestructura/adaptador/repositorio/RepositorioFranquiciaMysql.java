@@ -1,6 +1,7 @@
 package com.microservicio.franquicia.infraestructura.adaptador.repositorio;
 
 import com.microservicio.franquicia.dominio.modelo.Franquicia;
+import com.microservicio.franquicia.dominio.modelo.FranquiciaActualizar;
 import com.microservicio.franquicia.dominio.puerto.RepositorioFranquicia;
 import org.springframework.stereotype.Repository;
 
@@ -20,8 +21,9 @@ public class RepositorioFranquiciaMysql implements RepositorioFranquicia {
     }
 
     @Override
-    public void actualizar(Franquicia franquicia) {
-
+    public void actualizar(FranquiciaActualizar franquiciaActualizar) {
+        this.franquiciaJpaRepository.actualizarPorNombre(franquiciaActualizar.getNombreActual(),
+                franquiciaActualizar.getNombreNuevo());
     }
 
     @Override
@@ -35,7 +37,7 @@ public class RepositorioFranquiciaMysql implements RepositorioFranquicia {
     }
 
     @Override
-    public boolean existePorId(Long id) {
-        return false;
+    public boolean existePorNombre(String nombre) {
+        return this.franquiciaJpaRepository.existsByNombre(nombre);
     }
 }
