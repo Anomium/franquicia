@@ -1,8 +1,7 @@
 package com.microservicio.api.sucursal.dominio.modelo;
 
 import com.microservicio.api.franquicia.dominio.modelo.Franquicia;
-import com.microservicio.api.franquicia.dominio.modelo.ProductoSucursal;
-import jakarta.persistence.CascadeType;
+import com.microservicio.api.producto.dominio.modelo.entidad.ProductoSucursal;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
@@ -13,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -67,4 +65,7 @@ public class Sucursal {
         this.telefono = telefono;
     }
 
+    public Sucursal(Long idSucursal) {
+        this.idSucursal = idSucursal;
+    }
 }

@@ -1,5 +1,6 @@
-package com.microservicio.api.franquicia.dominio.modelo;
+package com.microservicio.api.producto.dominio.modelo.entidad;
 
+import com.microservicio.api.sucursal.dominio.modelo.Sucursal;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,6 +19,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @Entity
 @Table(name = "producto_sucursal")
 public class ProductoSucursal {
@@ -25,9 +28,9 @@ public class ProductoSucursal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProductoSucursal;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "id_sucursal", nullable = false)
-    private Long idsucursal;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_sucursal", nullable = false)
+    private Sucursal idsucursal;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_producto", nullable = false)
@@ -46,5 +49,16 @@ public class ProductoSucursal {
     @UpdateTimestamp
     @Column(name = "fecha_actualizacion")
     private LocalDateTime fechaActualizacion;
+
+    public ProductoSucursal(Producto producto, Sucursal idsucursal, Integer stock, BigDecimal precioVenta) {
+        this.producto = producto;
+        this.idsucursal = idsucursal;
+        this.stock = stock;
+        this.precioVenta = precioVenta;
+    }
+
+    public void seteoIdProducto(Long idProducto) {
+        this.producto = new Producto(idProducto);
+    }
 
 }

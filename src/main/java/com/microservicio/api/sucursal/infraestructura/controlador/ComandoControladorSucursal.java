@@ -1,11 +1,10 @@
 package com.microservicio.api.sucursal.infraestructura.controlador;
 
 import com.microservicio.api.comun.comun_aplicacion.ComandoRespuesta;
-import com.microservicio.api.sucursal.aplicacion.comando.manejador.ManejadorCrearSucursal;
 import com.microservicio.api.sucursal.aplicacion.comando.ComandoActualizarSucursal;
 import com.microservicio.api.sucursal.aplicacion.comando.ComandoSucursal;
 import com.microservicio.api.sucursal.aplicacion.comando.manejador.ManejadorActualizarSucursal;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.microservicio.api.sucursal.aplicacion.comando.manejador.ManejadorCrearSucursal;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,11 +32,6 @@ public class ComandoControladorSucursal {
     @PutMapping
     public void update(@RequestBody ComandoActualizarSucursal comandoActualizarSucursal) {
         manejadorActualizarSucursal.ejecutar(comandoActualizarSucursal);
-    }
-
-    @GetMapping
-    public String saludo() {
-        return "hola";
     }
 
 }
