@@ -5,7 +5,10 @@ import com.microservicio.api.producto.dominio.puerto.dao.DaoProducto;
 import com.microservicio.api.producto.infraestructura.adaptador.repositorio.ProductoJpaRepository;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class DaoProductoMysql implements DaoProducto {
@@ -18,6 +21,16 @@ public class DaoProductoMysql implements DaoProducto {
 
     @Override
     public List<DtoProducto> listar(String idFranquicia) {
-        return this.productoJpaRepository.listarProductoMayorStockPorSucursal(idFranquicia);
+        List<Object[]> objects = this.productoJpaRepository.listarProductoMayorStockPorSucursal(idFranquicia);
+        List<DtoProducto> dtos = new ArrayList<>();
+        for (Object[] fila : objects) {
+            DtoProducto dto = new DtoProducto();
+            dto.setNombreProducto(fila[0].toString());
+            dto.setNombreSucursal(fila[1].toString());
+            dto.setStock((Integer) fila[2]);
+            dto.setPrecioVenta((BigDecimal) fila[3]);
+            dtos.add(dto);
+        }
+        return dtos;
     }
 }

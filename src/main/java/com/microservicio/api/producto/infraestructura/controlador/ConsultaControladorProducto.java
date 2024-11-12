@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/api/producto")
 @ApiOperation("Controlador consulta producto")
 public class ConsultaControladorProducto {
 
