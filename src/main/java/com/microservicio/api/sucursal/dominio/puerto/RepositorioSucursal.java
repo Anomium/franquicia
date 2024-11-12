@@ -13,6 +13,4 @@ public interface RepositorioSucursal {
 
     boolean existe(String nombre);
 
-    boolean existePorNombre(String nombre);
-
 }

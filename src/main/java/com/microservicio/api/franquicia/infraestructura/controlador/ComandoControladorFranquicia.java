@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/franquicias")
+@RequestMapping("/franquicias")
 public class ComandoControladorFranquicia {
 
     private final ManejadorCrearFranquicia manejadorCrearFranquicia;

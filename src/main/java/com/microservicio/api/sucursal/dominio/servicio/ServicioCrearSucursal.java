@@ -15,14 +15,7 @@ public class ServicioCrearSucursal {
     }
 
     public Long ejecutar(Sucursal sucursal) {
-        validarExistenciaPrevia(sucursal);
         return this.repositorioSucursal.crear(sucursal);
     }
 
-    private void validarExistenciaPrevia(Sucursal sucursal) {
-        boolean existe = this.repositorioSucursal.existePorNombre(sucursal.getNombre());
-        if (existe) {
-            throw new ExcepcionDuplicidad(LA_SUCURSAL_YA_EXISTE_EN_EL_SISTEMA);
-        }
-    }
 }

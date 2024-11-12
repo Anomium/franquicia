@@ -36,8 +36,4 @@ public class RepositorioSucursalMysql implements RepositorioSucursal {
         return false;
     }
 
-    @Override
-    public boolean existePorNombre(String nombre) {
-        return this.sucursalJpaRepository.existsByNombre(nombre);
-    }
 }

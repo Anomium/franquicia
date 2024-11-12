@@ -10,8 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SucursalJpaRepository extends JpaRepository<Sucursal, Long> {
 
-    boolean existsByNombre(String nombre);
-
     @Modifying
     @Query(value = "UPDATE sucursal s SET s.nombre = :nuevoNombre WHERE LOWER(s.nombre) = LOWER(:nombreActual)", nativeQuery = true)
     void actualizarPorNombre(@Param("nombreActual") String nombreActual,

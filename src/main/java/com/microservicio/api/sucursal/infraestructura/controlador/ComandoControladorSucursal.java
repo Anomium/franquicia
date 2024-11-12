@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/sucursal")
+@RequestMapping("/sucursal")
 public class ComandoControladorSucursal {
 
     private final ManejadorCrearSucursal manejadorCrearSucursal;
